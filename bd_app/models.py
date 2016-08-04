@@ -17,6 +17,8 @@ class Patient(models.Model):
 		return (str(self.barcode) + '; ' + str(self.cohort) + '; ' +
 			   str(self.gender))
 
+	class Meta:
+		unique_together = ['barcode', 'cohort', 'gender']
 
 
 class ClinData(models.Model):
@@ -49,6 +51,16 @@ class ClinData(models.Model):
 		return (str(self.patient) + '; ' + str(self.msi) + '; ' +
 			   str(self.vital_status))
 
+		class Meta:
+			unique_together = [
+	                              'msi',
+	                              'vital_status',
+	                              'days_to_death',
+	                              'days_to_last_followup',
+	                              'path_stage',
+	                              'patient',
+			                  ]
+
 
 class ExpData(models.Model):
 	braf  = models.FloatField(default = None)
@@ -64,4 +76,18 @@ class ExpData(models.Model):
 	patient = models.ForeignKey(Patient)
 
 	def __str__(self):
-		return (str(patient) + '; expression data')
+		return (str(self.patient) + '; expression data')
+
+	class Meta:
+		unique_together = [
+                              'braf',
+                              'brap',
+                              'brca1',
+                              'brca2',
+                              'brcc3',
+                              'brd1',
+                              'brd2',
+                              'brd3',
+                              'brd4',
+                              'patient',
+		                  ]
