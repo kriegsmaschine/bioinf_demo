@@ -15,7 +15,7 @@ class Patient(models.Model):
 
 	def __str__(self):
 		return (str(self.barcode) + '; ' + str(self.cohort) + '; ' +
-			   str(self.gender))
+			    str(self.gender))
 
 	class Meta:
 		unique_together = ['barcode', 'cohort', 'gender']
@@ -49,7 +49,7 @@ class ClinData(models.Model):
 
 	def __str__(self):
 		return (str(self.patient) + '; ' + str(self.msi) + '; ' +
-			   str(self.vital_status))
+			    str(self.vital_status))
 
 		class Meta:
 			unique_together = [
