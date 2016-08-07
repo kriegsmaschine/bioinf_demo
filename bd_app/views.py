@@ -8,13 +8,12 @@ from django.core.urlresolvers import reverse
 
 def index(request):
 	if request.method == 'POST':
-		#pt_form   = PatientForm(request.POST)
-		pt_form = TestForm(request.POST)
+		pt_form   = PatientForm(request.POST)
 
-		'''
-		#clin_form = ClinDataForm(request.POST)
+		
+		clin_form = ClinDataForm(request.POST)
 		#exp_form  = ExpDataForm(request.POST)
-
+		'''
 		if (pt_form.is_valid() and clin_form.is_valid() and 
 			exp_form.is_valid()):
 		'''
@@ -37,7 +36,7 @@ def index(request):
 				          {'ppt_form':d_pt_form, 'pclin_form':d_clin_form,'pexp_form':d_exp_form,})
 
 	else:
-		pt_form   = TestForm()# PatientForm()
+		pt_form   = PatientForm()
 		clin_form = ClinDataForm()
 		exp_form  = ExpDataForm()
 

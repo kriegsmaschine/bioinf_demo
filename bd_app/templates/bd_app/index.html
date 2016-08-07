@@ -5,10 +5,15 @@
 <form action="{% url 'bd_app:index' %}" method="post">
   {% csrf_token %}
 
+<div>
+  <h3>Patient Parameters</h3>
   {{ pt_form.as_p }}
-  
-<!---
+</div>
+<div>
+  <h3>Clinical Parameters</h3>
   {{ clin_form.as_p }}
+</div>
+<!--
   {{ exp_form.as_p }}
 -->
   <button name="submit">submit</button>
