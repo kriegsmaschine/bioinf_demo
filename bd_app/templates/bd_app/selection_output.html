@@ -1,0 +1,17 @@
+{% extends "bd_app/base.html" %}
+
+{% block content %}
+
+Cohort: {{ ppt_form.cohort }}<br>
+Gender: {{ ppt_form.gender }}
+
+<!--
+{{ pclin_form }}
+{{ pexp_form }}
+-->
+<p>
+  <form action="{% url 'bd_app:index' %}">
+    <button name="button">return</button>
+  </form>
+</p>
+{% endblock content %}

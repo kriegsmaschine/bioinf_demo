@@ -2,6 +2,16 @@
 
 {% block content %}
 
+<form action="{% url 'bd_app:index' %}" method="post">
+  {% csrf_token %}
 
+  {{ pt_form.as_p }}
+  
+<!---
+  {{ clin_form.as_p }}
+  {{ exp_form.as_p }}
+-->
+  <button name="submit">submit</button>
+</form>
 
 {% endblock content %}
