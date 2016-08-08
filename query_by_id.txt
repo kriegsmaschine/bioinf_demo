@@ -10,7 +10,8 @@ __________________________________________________________________________
 
 p = model._meta.get_fields()    //use this to get all the attributes for a model
 
-p.name                          //use this to get just the attributes name, omitting its type
+p[x].name                       //use this to get just the attributes name, omitting its type
+			        //x = element of the list
 
 ___________________________________________________________________________
 

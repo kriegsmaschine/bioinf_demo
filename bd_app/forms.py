@@ -1,10 +1,11 @@
 from django import forms
 from .models import Patient, ClinData, ExpData
+from .utils import convertMetaFieldsToList
 
 from django.contrib.admin.widgets import FilteredSelectMultiple
 
 class PatientForm(forms.Form):
-	cohort = forms.MultipleChoiceField(choices=[], required=False)
+	cohort = forms.MultipleChoiceField(choices=[], required=True)
 	gender = forms.MultipleChoiceField(choices=[], required=False)
 
 	def __init__(self, *args, **kwargs):
@@ -31,11 +32,13 @@ class ClinDataForm(forms.Form):
 	
 	days_to_death         = forms.MultipleChoiceField(choices=[], required=False)
 	dtd_radio             = forms.ChoiceField(choices=RADIO_CHOICES, required=False,
-								widget=forms.RadioSelect, label='Filter: Days to Death')
+								widget=forms.RadioSelect, label='Filter: Days to Death',
+								initial=1)
 	
 	days_to_last_followup = forms.MultipleChoiceField(choices=[], required=False)
 	dtlf_radio            = forms.ChoiceField(choices=RADIO_CHOICES, required=False,
-								widget=forms.RadioSelect, label='Filter: Days to Last Followup')
+								widget=forms.RadioSelect, label='Filter: Days to Last Followup',
+								initial=1)
 	
 	path_stage            = forms.MultipleChoiceField(choices=[], required=False)
 
@@ -63,10 +66,25 @@ class ClinDataForm(forms.Form):
 
 
 
-class ExpDataForm(forms.ModelForm):
-	class Meta:
-		model = ExpData
-		fields = (
-                   'braf','brap','brca1','brca2','brcc3',
-                   'brd1','brd2','brd3','brd4',
-			     )
+class ExpDataForm(forms.Form):
+	genes = forms.MultipleChoiceField(choices=[], required=True)
+	
+	
+	def __init__(self, *args, **kwargs):
+		super(ExpDataForm, self).__init__(*args, **kwargs)
+
+		ch = ExpData._meta.get_fields()
+		tch_genes = convertMetaFieldsToList(ch)
+		
+		self.fields['genes'].choices = sorted(tch_genes)
+		
+
+
+class SelectDataChart(forms.Form):
+	CHART_CHOICES = (
+						('boxplot','boxplot'),
+						('histogram','histogram'),
+						('kaplan-meier','kaplan-meier'),
+		            )
+
+	chartType = forms.MultipleChoiceField(choices = CHART_CHOICES, required=True)
