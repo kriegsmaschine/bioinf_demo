@@ -83,11 +83,10 @@ def processClinDataForm(clin_form, pt_key):
 	else:
 		id_list = testConvert(id_queryset)
 
-	#return id_list
+	#may remove 'msival' from return dictionary, used for testing purposes
+	dict_clinData = {'id_list':id_list, 'msival':msi_selection}
 
-	d = {'id_list':id_list, 'msival':msi_selection}
-	#d = {'id_list':id_list, 'msival':str(clin_form['msi'].value())}
-	return d
+	return dict_clinData
 
 
 
