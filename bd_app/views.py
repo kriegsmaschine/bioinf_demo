@@ -26,12 +26,12 @@ def index(request):
 			pt_key2 = processClinDataForm(clin_form, pt_key)
 
 			#process the ExpDataForm
-			#d_exp_form = processExpDataForm(exp_form, pt_key2)
-			d_exp_form = {'test':None}
+			exp_data = processExpDataForm(exp_form, chart_form, pt_key2)
+
 
 			#return the processed forms
 			return render(request, 'bd_app/selection_output.html', 
-				          {'ppt_form':pt_key, 'pclin_form':pt_key2,'pexp_form':d_exp_form,})
+				          {'ppt_form':pt_key, 'pclin_form':pt_key2,'pexp_form':exp_data,})
 
 	else:
 		pt_form    = PatientForm()

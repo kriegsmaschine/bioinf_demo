@@ -35,11 +35,11 @@ class ClinDataForm(forms.Form):
 								widget=forms.RadioSelect, label='Filter: Days to Death',
 								initial=1)
 	
-	days_to_last_followup = forms.MultipleChoiceField(choices=[], required=False)
-	dtlf_radio            = forms.ChoiceField(choices=RADIO_CHOICES, required=False,
-								widget=forms.RadioSelect, label='Filter: Days to Last Followup',
-								initial=1)
-	
+	#days_to_last_followup = forms.MultipleChoiceField(choices=[], required=False)
+	#dtlf_radio            = forms.ChoiceField(choices=RADIO_CHOICES, required=False,
+	#							widget=forms.RadioSelect, label='Filter: Days to Last Followup',
+	#							initial=1)
+	#
 	path_stage            = forms.MultipleChoiceField(choices=[], required=False)
 
 	def __init__(self, *args, **kwargs):
@@ -56,9 +56,9 @@ class ClinDataForm(forms.Form):
 					ClinData.objects.all().values_list('days_to_death',
 							'days_to_death').distinct().order_by('days_to_death'))
 
-		self.fields['days_to_last_followup'].choices = (
-					ClinData.objects.all().values_list('days_to_last_followup',
-							'days_to_last_followup').distinct().order_by('days_to_last_followup'))
+		#self.fields['days_to_last_followup'].choices = (
+		#			ClinData.objects.all().values_list('days_to_last_followup',
+		#					'days_to_last_followup').distinct().order_by('days_to_last_followup'))
 
 		self.fields['path_stage'].choices = (
 					ClinData.objects.all().values_list('path_stage',

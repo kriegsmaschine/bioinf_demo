@@ -43,7 +43,7 @@ class ClinData(models.Model):
 											)
 
 	days_to_death         = models.IntegerField(default = None)
-	days_to_last_followup = models.IntegerField(default = None)
+	#days_to_last_followup = models.IntegerField(default = None)
 	path_stage            = models.IntegerField(default = None)
 	patient               = models.ForeignKey(Patient)
 

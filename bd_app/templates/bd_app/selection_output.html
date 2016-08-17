@@ -3,7 +3,9 @@
 {% block content %}
 
 <p>Cohort Patient Key(s): {{ ppt_form.pt_key }}</p>
-<p>Clinical Parameters: {{ pclin_form.msival }}</p>
+<p>Clinical Parameters: pt_key{{ pclin_form.id_list }}</p>
+<p>Expression Parameters: {{ pexp_form.exp_data }}</p>
+<p>Chart Type: {{ pexp_form.plot }}</p>
 
 <!--
 {{ pclin_form }}
