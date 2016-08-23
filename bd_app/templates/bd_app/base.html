@@ -1,3 +1,18 @@
+{% block head %}
+<head>
+
+  <meta charset="utf-8"/>
+  {% load static %}
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script type="text/javascript" src='{% static "js/jsUtil.js" %}'></script>
+
+  {% load static %}
+
+</head>
+{% endblock head %}
+
+<body>
+
 <h2>Cohort Analysis App</h2>
 
 <p><a href="{% url 'bd_app:index' %}">Home</a></p>
@@ -13,3 +28,5 @@
 </div>
 
 {% block content %}{% endblock content %}
+
+</body>

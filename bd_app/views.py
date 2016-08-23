@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Patient, ClinData, ExpData
 from .forms  import *
 from .utils import *
+import json
 
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -30,8 +31,7 @@ def index(request):
 
 
 			#return the processed forms
-			return render(request, 'bd_app/selection_output.html', 
-				          {'ppt_form':pt_key, 'pclin_form':pt_key2,'pexp_form':exp_data,})
+			return render(request, 'bd_app/selection_output.html', {'exp_data':json.dumps(exp_data)})
 
 	else:
 		pt_form    = PatientForm()
