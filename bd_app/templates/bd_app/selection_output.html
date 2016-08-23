@@ -1,6 +1,6 @@
 {% extends "bd_app/base.html" %}
+{% load static %}
 
-{% block head %}{% endblock head %}
 
 {% block content %}
 
@@ -14,9 +14,11 @@
 
 
 <div id="test" style="width: 50%; height: 500px;">
-  <script type="text/javascript" src='{% static "js/jsUtil.js" %}'>
+  <button type="input" onclick="scatter()" src="{% static 'js/jsUtil.js' %}">push</button>
+  <!-- <script type="text/javascript" src="jsUtil.js">
     scatter()
   </script>
+  -->
 </div>
 
 <p>
