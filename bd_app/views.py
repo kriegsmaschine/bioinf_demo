@@ -29,7 +29,6 @@ def index(request):
 			#process the ExpDataForm
 			exp_data = processExpDataForm(exp_form, chart_form, pt_key2)
 
-
 			#return the processed forms
 			return render(request, 'bd_app/selection_output.html', {'exp_data':json.dumps(exp_data)})
 
