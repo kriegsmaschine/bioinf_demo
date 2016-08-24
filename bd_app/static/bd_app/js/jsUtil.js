@@ -7,17 +7,30 @@ function scatter(exp_data){
 	}
 
 	document.getElementById("output_test").innerHTML = data.exp_data.length;
+	document.getElementById("output_test").innerHTML += data.gene;
+ 	if(data.plot == "scatter"){
+		var trace1 = {
+		  x: tlen,
+		  y: data.exp_data,
+		  mode: 'markers',
+		  type: 'scatter'
+		};
+	
+		var data = [trace1];
+		Plotly.newPlot('output_test', data);
 
-	var trace1 = {
-	  x: tlen,
-	  y: data.exp_data,
-	  mode: 'markers',
-	  type: 'scatter'
-	};
+	}else if(data.plot == "boxplot"){
+		alert(data.plot);
 
-	var data = [trace1];
+	}else if(data.plot == "histogram"){
+		alert(data.plot);
 
-	Plotly.newPlot('output_test', data);
+	}else if(data.plot == "kaplan-meier"){
+		alert(data.plot);
+
+	}else{
+		alert("No chart type selected");
+	}
 
 	/*
 		to add multiple plots per plotly graph mush use Plotly.addTraces()

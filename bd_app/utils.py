@@ -161,7 +161,7 @@ def processExpDataForm(exp_form, chart_form, pt_key):
 	exp_data = convertSingleListQuerySet(exp_data)
 
 	plot_selection = chart_form['chartType'].value()
-	exp_data = {'exp_data':exp_data, 'plot':plot_selection}
+	exp_data = {'exp_data':exp_data, 'plot':plot_selection, 'gene':gene_selection,}
 
 	return exp_data
 

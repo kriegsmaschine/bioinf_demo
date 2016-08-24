@@ -85,6 +85,7 @@ class SelectDataChart(forms.Form):
 						('boxplot','boxplot'),
 						('histogram','histogram'),
 						('kaplan-meier','kaplan-meier'),
+						('scatter','scatter'),
 		            )
 
 	chartType = forms.MultipleChoiceField(choices = CHART_CHOICES, required=True)
