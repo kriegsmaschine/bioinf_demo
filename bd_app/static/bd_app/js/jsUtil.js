@@ -7,23 +7,48 @@ function scatter(exp_data){
 	}
 
 	document.getElementById("output_test").innerHTML = data.exp_data.length;
-	document.getElementById("output_test").innerHTML += data.gene;
+	document.getElementById("output_test").innerHTML += "".concat("  Gene: ",data.gene);
  	if(data.plot == "scatter"){
 		var trace1 = {
 		  x: tlen,
 		  y: data.exp_data,
 		  mode: 'markers',
-		  type: 'scatter'
+		  type: 'scatter',
+		  name: data.gene,
 		};
 	
 		var data = [trace1];
 		Plotly.newPlot('output_test', data);
 
 	}else if(data.plot == "boxplot"){
-		alert(data.plot);
+		var trace1 = {
+			y: data.exp_data,
+			type: 'box',
+			name: data.gene,
+		}
+
+		var data = [trace1];
+		Plotly.newPlot('output_test', data);
 
 	}else if(data.plot == "histogram"){
-		alert(data.plot);
+		var max = Math.max.apply(data.exp_data);
+		autobinx: false;
+
+		var binSize = 0.025 * max;
+		var trace1 = {
+			x: data.exp_data,
+			type: 'histogram',
+			name: data.gene,
+
+			xbins: {
+				start: 0,
+				end: max,
+				size: binSize,
+			}
+		};
+		
+		var data = [trace1];
+		Plotly.newPlot('output_test', data);
 
 	}else if(data.plot == "kaplan-meier"){
 		alert(data.plot);
